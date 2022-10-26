@@ -9,22 +9,24 @@
     "test": "ng test"
   },
   "dependencies": {
+    "@angular/animations": "^14.2.7",
     "@angular/common": "^14.2.7",
     "@angular/compiler": "^14.2.7",
     "@angular/core": "^14.2.7",
     "@angular/forms": "^14.2.7",
     "@angular/platform-browser": "^14.2.7",
     "@angular/platform-browser-dynamic": "^14.2.7",
-    "@angular/animations": "^14.2.7",
     "@angular/router": "^14.2.7",
+    "@ngx-formly/bootstrap": "^6.0.1",
+    "@ngx-formly/core": "^6.0.1",
+    "@popperjs/core": "*",
+    "bootstrap": "^5.2.2",
+    "classlist.js": "^1.1.20150312",
     "core-js": "^3.26.0",
     "rxjs": "^7.5.7",
-    "zone.js": "~0.11.8",
     "tslib": "^2.4.0",
-    "@ngx-formly/core": "^6.0.1",
-    "@ngx-formly/bootstrap": "^6.0.1",
-    "bootstrap": "^5.2.2",
-    "@popperjs/core": "*"
+    "web-animations-js": "^2.3.2",
+    "zone.js": "~0.11.8"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~14.2.6",
