@@ -10,11 +10,11 @@ import { PanelH2FieldWrapper } from './components/wrappers/panelH2-wrapper.compo
 import { PanelH3FieldWrapper } from './components/wrappers/panelH3-wrapper.component';
 import { BlankSpaceFieldWrapper } from './components/wrappers/blank-space-wrapper.component';
 import { PanelDisplayFieldWrapper } from './components/wrappers/panel-display-wrapper.component';
-import { BlankSpaceFieldType } from './components/types/blank-space-wrapper.component';
-import { PanelDisplayFieldType } from './components/types/panel-display-type.component';
-import { PanelH1FieldType } from './components/types/panelH1-type.component';
-import { PanelH2FieldType } from './components/types/panelH2-type.component';
-import { PanelH3FieldType } from './components/types/panelH3-type.component';
+import { BlankSpaceFieldType } from './components/types/divs/blank-space-type.component';
+import { PanelDisplayFieldType } from './components/types/panels/panel-display-type.component';
+import { PanelH1FieldType } from './components/types/panels/panelH1-type.component';
+import { PanelH2FieldType } from './components/types/panels/panelH2-type.component';
+import { PanelH3FieldType } from './components/types/panels/panelH3-type.component';
 
 @NgModule({
   imports: [
@@ -42,15 +42,7 @@ import { PanelH3FieldType } from './components/types/panelH3-type.component';
     }),
   ],
   bootstrap: [AppComponent],
-  declarations: [
-    AppComponent,
-    PanelH1FieldWrapper,
-    PanelH2FieldWrapper,
-    PanelH3FieldWrapper,
-    PanelDisplayFieldWrapper,
-    BlankSpaceFieldWrapper,
-    BlankSpaceFieldType,
-  ],
+  declarations: [AppComponent],
 })
 export class AppModule {}
 
