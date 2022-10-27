@@ -1,9 +1,6 @@
-import {Component} from '@angular/core';
-import {FormGroup} from '@angular/forms';
-import {FormlyFieldConfig, FormlyFormOptions} from '@ngx-formly/core';
-import {PanelH3FieldWrapper} from "./components/wrappers/panelH3-wrapper.component";
-import {PanelDisplayFieldWrapper} from "./components/wrappers/panel-display-wrapper.component";
-import {BlankSpaceFieldWrapper} from "./components/wrappers/blank-space-wrapper.component";
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 @Component({
   selector: 'formly-app-example',
@@ -15,7 +12,7 @@ export class AppComponent {
     S_WF_STATUS: 'as',
     S_VIRTUAL_Q: 'Dealing Triage',
     I_IS_RTA_FAX: 'SW_NA',
-    S_ORIGINAL_CASE: '123'
+    S_ORIGINAL_CASE: '123',
   };
   options: FormlyFormOptions = {
     formState: {
@@ -26,40 +23,43 @@ export class AppComponent {
   fields: FormlyFieldConfig[] = [
     {
       key: 'S_VIRTUAL_Q',
-      wrappers: [PanelH3FieldWrapper],
+      type: 'H3',
       expressions: {
-        'props.label': () => 'Case ' + this.model.S_VIRTUAL_Q
-      }
+        'props.label': () => 'Case ' + this.model.S_VIRTUAL_Q,
+      },
     },
     {
       key: 'S_WF_STATUS',
       type: 'input',
-      hide: true
+      hide: true,
     },
     {
       key: 'S_WF_STATUS',
-      wrappers: [PanelDisplayFieldWrapper],
+      type: 'panel',
       props: {
-        description: 'Show if S_WF_STATUS<>SW_NA'
+        description: 'Show if S_WF_STATUS<>SW_NA',
       },
       expressions: {
         'props.label': () => 'STATUS: ' + this.model.S_WF_STATUS,
-        'hide': () => this.model.S_WF_STATUS == "SW_NA"
-      }
+        hide: () => this.model.S_WF_STATUS == 'SW_NA',
+      },
     },
     {
       key: 'S_ORIGINAL_CASE',
-      wrappers: [PanelDisplayFieldWrapper],
+      type: 'panel',
       props: {
-        description: 'Show always'
+        description: 'Show always',
       },
       expressions: {
-        'props.label': () => this.model.S_ORIGINAL_CASE ? 'Original CaseRef: ' + this.model.S_ORIGINAL_CASE : 'Original CaseRef:'
-      }
+        'props.label': () =>
+          this.model.S_ORIGINAL_CASE
+            ? 'Original CaseRef: ' + this.model.S_ORIGINAL_CASE
+            : 'Original CaseRef:',
+      },
     },
     {
       key: 'BLANK',
-      wrappers: [BlankSpaceFieldWrapper]
+      type: 'blank',
     },
     {
       key: 'nested.story',
@@ -67,12 +67,12 @@ export class AppComponent {
       props: {
         label: 'Some sweet story',
         placeholder:
-            'It allows you to build and maintain your forms with the ease of JavaScript :-)',
+          'It allows you to build and maintain your forms with the ease of JavaScript :-)',
         description: '',
       },
       expressions: {
         focus: 'formState.awesomeIsForced',
-        'props.description': ({options: {formState}}) => {
+        'props.description': ({ options: { formState } }) => {
           if (formState.awesomeIsForced) {
             return 'And look! This field magically got focus!';
           }
@@ -84,10 +84,10 @@ export class AppComponent {
     {
       key: 'awesome',
       type: 'checkbox',
-      props: {label: ''},
+      props: { label: '' },
       expressions: {
         'props.disabled': 'formState.awesomeIsForced',
-        'props.label': ({options: {formState}}) => {
+        'props.label': ({ options: { formState } }) => {
           if (formState.awesomeIsForced) {
             return 'Too bad, formly is really awesome...';
           } else {
@@ -105,7 +105,7 @@ export class AppComponent {
       },
       expressions: {
         hide: 'model.awesome',
-        'props.placeholder': ({options: {formState}}) => {
+        'props.placeholder': ({ options: { formState } }) => {
           if (formState.awesomeIsForced) {
             return `Too bad... It really is awesome! Wasn't that cool?`;
           } else {
@@ -114,7 +114,7 @@ export class AppComponent {
         },
         'props.disabled': 'formState.awesomeIsForced',
       },
-    }
+    },
   ];
 
   submit() {
