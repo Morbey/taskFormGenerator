@@ -5,8 +5,11 @@ import {FormlyModule} from '@ngx-formly/core';
 import {FormlyBootstrapModule} from '@ngx-formly/bootstrap';
 
 import {AppComponent} from './app.component';
-import {DescriptionFieldType} from './components/fieldTypes/description-field.type';
 import {PanelH1FieldWrapper} from "./components/wrappers/panelH1-wrapper.component";
+import {PanelH2FieldWrapper} from "./components/wrappers/panelH2-wrapper.component";
+import {PanelH3FieldWrapper} from "./components/wrappers/panelH3-wrapper.component";
+import {BlankSpaceFieldWrapper} from "./components/wrappers/blank-space-wrapper.component";
+import {PanelDisplayFieldWrapper} from "./components/wrappers/panel-display-wrapper.component";
 
 @NgModule({
   imports: [
@@ -17,20 +20,17 @@ import {PanelH1FieldWrapper} from "./components/wrappers/panelH1-wrapper.compone
       validationMessages: [
         {name: 'required', message: 'This field is required'},
       ],
-      types: [
-        {
-          name: 'description',
-          component: DescriptionFieldType,
-          wrappers: ['form-field'],
-        },
-      ],
       wrappers: [
-        {name: 'panelH1', component: PanelH1FieldWrapper}
+        {name: 'panelH1', component: PanelH1FieldWrapper},
+        {name: 'panelH2', component: PanelH2FieldWrapper},
+        {name: 'panelH3', component: PanelH3FieldWrapper},
+        {name: 'panel-display', component: PanelDisplayFieldWrapper},
+        {name: 'blank-space', component: BlankSpaceFieldWrapper}
       ]
     }),
   ],
   bootstrap: [AppComponent],
-  declarations: [AppComponent, DescriptionFieldType, PanelH1FieldWrapper],
+  declarations: [AppComponent, PanelH1FieldWrapper, PanelH2FieldWrapper, PanelH3FieldWrapper, PanelDisplayFieldWrapper, BlankSpaceFieldWrapper],
 })
 export class AppModule {
 }

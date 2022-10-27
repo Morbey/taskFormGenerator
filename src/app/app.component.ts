@@ -1,7 +1,9 @@
 import {Component} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {FormlyFieldConfig, FormlyFormOptions} from '@ngx-formly/core';
-import {PanelH1FieldWrapper} from "./components/wrappers/panelH1-wrapper.component";
+import {PanelH3FieldWrapper} from "./components/wrappers/panelH3-wrapper.component";
+import {PanelDisplayFieldWrapper} from "./components/wrappers/panel-display-wrapper.component";
+import {BlankSpaceFieldWrapper} from "./components/wrappers/blank-space-wrapper.component";
 
 @Component({
   selector: 'formly-app-example',
@@ -9,7 +11,12 @@ import {PanelH1FieldWrapper} from "./components/wrappers/panelH1-wrapper.compone
 })
 export class AppComponent {
   form = new FormGroup({});
-  model: any = {S_WF_STATUS: 'test', S_VIRTUAL_Q: 'Dealing Triage', I_IS_RTA_FAX: 'SW_NA'};
+  model: any = {
+    S_WF_STATUS: 'as',
+    S_VIRTUAL_Q: 'Dealing Triage',
+    I_IS_RTA_FAX: 'SW_NA',
+    S_ORIGINAL_CASE: '123'
+  };
   options: FormlyFormOptions = {
     formState: {
       awesomeIsForced: false,
@@ -19,8 +26,7 @@ export class AppComponent {
   fields: FormlyFieldConfig[] = [
     {
       key: 'S_VIRTUAL_Q',
-      wrappers: [PanelH1FieldWrapper],
-      props: {label: ''},
+      wrappers: [PanelH3FieldWrapper],
       expressions: {
         'props.label': () => 'Case ' + this.model.S_VIRTUAL_Q
       }
@@ -28,14 +34,32 @@ export class AppComponent {
     {
       key: 'S_WF_STATUS',
       type: 'input',
+      hide: true
+    },
+    {
+      key: 'S_WF_STATUS',
+      wrappers: [PanelDisplayFieldWrapper],
       props: {
-        label: 'STATUS: ',
-        placeholder: 'STATUS: ',
-        readonly: true,
+        description: 'Show if S_WF_STATUS<>SW_NA'
       },
       expressions: {
-        hide: '!model.S_WF_STATUS',
+        'props.label': () => 'STATUS: ' + this.model.S_WF_STATUS,
+        'hide': () => this.model.S_WF_STATUS == "SW_NA"
+      }
+    },
+    {
+      key: 'S_ORIGINAL_CASE',
+      wrappers: [PanelDisplayFieldWrapper],
+      props: {
+        description: 'Show always'
       },
+      expressions: {
+        'props.label': () => this.model.S_ORIGINAL_CASE ? 'Original CaseRef: ' + this.model.S_ORIGINAL_CASE : 'Original CaseRef:'
+      }
+    },
+    {
+      key: 'BLANK',
+      wrappers: [BlankSpaceFieldWrapper]
     },
     {
       key: 'nested.story',
