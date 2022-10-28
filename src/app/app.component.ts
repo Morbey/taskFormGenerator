@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
+import {Component} from '@angular/core';
+import {FormGroup} from '@angular/forms';
+import {FormlyFieldConfig, FormlyFormOptions} from '@ngx-formly/core';
 
 @Component({
   selector: 'formly-app-example',
@@ -52,9 +52,9 @@ export class AppComponent {
       },
       expressions: {
         'props.label': () =>
-          this.model.S_ORIGINAL_CASE
-            ? 'Original CaseRef: ' + this.model.S_ORIGINAL_CASE
-            : 'Original CaseRef:',
+            this.model.S_ORIGINAL_CASE
+                ? 'Original CaseRef: ' + this.model.S_ORIGINAL_CASE
+                : 'Original CaseRef:',
       },
     },
     {
@@ -67,12 +67,12 @@ export class AppComponent {
       props: {
         label: 'Some sweet story',
         placeholder:
-          'It allows you to build and maintain your forms with the ease of JavaScript :-)',
+            'It allows you to build and maintain your forms with the ease of JavaScript :-)',
         description: '',
       },
       expressions: {
         focus: 'formState.awesomeIsForced',
-        'props.description': ({ options: { formState } }) => {
+        'props.description': ({options: {formState}}) => {
           if (formState.awesomeIsForced) {
             return 'And look! This field magically got focus!';
           }
@@ -84,10 +84,10 @@ export class AppComponent {
     {
       key: 'awesome',
       type: 'checkbox',
-      props: { label: '' },
+      props: {label: ''},
       expressions: {
         'props.disabled': 'formState.awesomeIsForced',
-        'props.label': ({ options: { formState } }) => {
+        'props.label': ({options: {formState}}) => {
           if (formState.awesomeIsForced) {
             return 'Too bad, formly is really awesome...';
           } else {
@@ -105,7 +105,7 @@ export class AppComponent {
       },
       expressions: {
         hide: 'model.awesome',
-        'props.placeholder': ({ options: { formState } }) => {
+        'props.placeholder': ({options: {formState}}) => {
           if (formState.awesomeIsForced) {
             return `Too bad... It really is awesome! Wasn't that cool?`;
           } else {
