@@ -1,7 +1,7 @@
 <form (ngSubmit)="submit()" [formGroup]="form">
   <formly-form [fields]="fields" [form]="form" [model]="model" [options]="options"></formly-form>
   <button class="btn btn-primary submit-button" type="submit">Submit</button>
-  <button (click)="options.resetModel()" class="btn btn-default" type="button">Reset</button>
+  <button (click)="getAllAttributes()" class="btn btn-default" type="button">GetAllAttributes</button>
 </form>
 
 

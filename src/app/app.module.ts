@@ -1,10 +1,11 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import {HttpClientModule} from "@angular/common/http";
+import {AppComponent} from './app.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FormlyModule} from '@ngx-formly/core';
 import {FormlyBootstrapModule} from '@ngx-formly/bootstrap';
 
-import {AppComponent} from './app.component';
 import {PanelH1FieldWrapper} from './components/wrappers/panelH1-wrapper.component';
 import {PanelH2FieldWrapper} from './components/wrappers/panelH2-wrapper.component';
 import {PanelH3FieldWrapper} from './components/wrappers/panelH3-wrapper.component';
@@ -19,6 +20,7 @@ import {PanelH3FieldType} from './components/types/panels/panelH3-type.component
 @NgModule({
   imports: [
     BrowserModule,
+    HttpClientModule,
     ReactiveFormsModule,
     FormlyBootstrapModule,
     FormlyModule.forRoot({
@@ -43,6 +45,7 @@ import {PanelH3FieldType} from './components/types/panels/panelH3-type.component
   ],
   bootstrap: [AppComponent],
   declarations: [AppComponent],
+  providers: []
 })
 export class AppModule {
 }

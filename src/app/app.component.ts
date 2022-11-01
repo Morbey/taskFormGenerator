@@ -1,12 +1,35 @@
 import {Component} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {FormlyFieldConfig, FormlyFormOptions} from '@ngx-formly/core';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'formly-app-example',
   templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title = 'IPE Form translator into Task Form';
+  // Object to save the response returned from the service.
+  myresponse: any;
+
+  // Url to fetch the employee records from the spring application.
+  readonly APP_URL = 'http://localhost:8080';
+
+  constructor(private _http: HttpClient) { }
+
+  // Method to fetch all employees from the database table.
+  getAllAttributes() {
+    this._http.get(this.APP_URL + '/attributes').subscribe(
+        data => {
+          this.myresponse = data;
+        },
+        error => {
+          console.log('Error occurred', error);
+        }
+    );
+  }
+
   form = new FormGroup({});
   model: any = {
     S_WF_STATUS: 'as',
